@@ -31,17 +31,5 @@ module.exports = {
       .offset((page - 1) * limitOfRecords);
 
     return res.json(ngos);
-  },
-
-  async show(req, res) {
-    const { id } = req.params;
-
-    const ngos = await dbConnection('ngos').select('*').where({ id });
-
-    if (!ngos[0]) {
-      return res.status(404).json({ error: 'NGO not found' })
-    }
-
-    return res.json(ngos[0]);
   }
 }

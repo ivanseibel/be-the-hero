@@ -69,17 +69,5 @@ module.exports = {
       .del();
 
     return res.status(204).send();
-  },
-
-  async show(req, res) {
-    const { id } = req.params;
-
-    const incident = await dbConnection('incidents').select('*').where({ id });
-
-    if (!incident[0]) {
-      return res.status(404).json({ error: 'Incident not found' });
-    }
-
-    return res.json(incident[0]);
   }
 }
